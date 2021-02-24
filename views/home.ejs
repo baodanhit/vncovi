@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/navigation.css">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.1/dist/bootstrap-table.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css">
+    <!-- bootstrap 4 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" defer></script>
+    <!-- bootstrap table -->
+    <script src="https://unpkg.com/bootstrap-table@1.18.1/dist/bootstrap-table.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.18.1/dist/locale/bootstrap-table-vi-VN.min.js"></script>
+    <!-- data table -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
+
+    <script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
+
+
+    <title>NCOVI</title>
+</head>
+
+<body>
+
+    <div id="app" class="container-fluid font-weight-bold wrapper">
+        <!--navigation-->
+        <nav class="nav side-nav" id="side-nav">
+            <!--close button-->
+            <div class="nav__close"></div>
+            <!--navigation list-->
+            <ul class="nav__list">
+                <!--navigation item-->
+                <li class="nav__item">
+                    <a class="nav-link" href="#general">
+                        <i class="fas fa-home"></i>
+                        Tổng quan <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <!--navigation item-->
+                <li class="nav__item">
+                    <a class="nav-link" href="#detail">
+                        <i class="fas fa-info-circle"></i>
+                        Chi tiết
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav-link" href="#notification">
+                        <i class="fas fa-bell"></i>
+                        Thông báo mới
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav-link" href="#visualize">
+                        <i class="fas fa-chart-bar"></i>
+                        Trực quan
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!--content part-->
+        <main class="page__content">
+            <!--open navigation button-->
+            <div class="nav-open-btn">
+                <div class="nav-open-btn__bar"></div>
+                <div class="nav-open-btn__bar"></div>
+                <div class="nav-open-btn__bar"></div>
+            </div>
+            <!--content block-->
+            <div class="content">
+                <div class="row mb-2" id="top-branch">
+                    <h5 class="col text-uppercase text-center mt-auto">Unofficial NCOVI DATA</h5>
+                </div>
+                <section id="general" class="my-5">
+                    <p class="section__title text-uppercase">Tổng quan</p>
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <a class="nav-link active" id="nav-vn-tab" data-toggle="tab" href="#tab-vn">Việt Nam</a>
+                            <a class="nav-link" id="nav-world-tab" data-toggle="tab" href="#tab-world">Thế Giới</a>
+                        </div>
+                    </nav>
+                    <div class="tab-content">
+                        <div id="tab-vn" class="card tab-pane fade show active">
+                            <div class="card-body container">
+                                <div class="row mt-1">
+                                    <div class="col-12 col-md-3 my-2 content-box">
+                                        <span class="title mb-2 text-left text-danger">Tổng số ca nhiễm: </span>
+                                        <span class="number p-2 rounded-pill bg-danger text-light">
+                                            <%= data.vietnam.total %>
+                                        </span>
+                                    </div>
+                                    <div class="col-12 col-md-3 my-2 content-box">
+                                        <span class="title mb-2 text-left text-warning">Đang điều trị: </span>
+                                        <span class="number p-2 rounded-pill bg-warning text-light">
+                                            <%= data.vietnam.active %>
+                                        </span>
+                                    </div>
+                                    <div class="col-12 col-md-3 my-2 content-box">
+                                        <span class="title mb-2 text-left text-success">Đã khỏi: </span>
+                                        <span class="number p-2 rounded-pill bg-success text-light">
+                                            <%= data.vietnam.recovered %>
+                                        </span>
+                                    </div>
+                                    <div class="col-12 col-md-3 my-2 content-box">
+                                        <span class="title mb-2 text-left text-dark">Tử vong: </span>
+                                        <span class="number p-2 rounded-pill bg-dark text-light">
+                                            <%= data.vietnam.dead %>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tab-world" class="card tab-pane fade">
+                            <div class="card-body">
+                                <div class="row mt-1">
+                                    <div class="col-12 col-md-3 my-2 content-box">
+                                        <span class="title mb-2 text-left text-danger">Tổng số ca nhiễm: </span>
+                                        <span class="number p-2 rounded-pill bg-danger text-light">
+                                            <%= data.world.total %>
+                                        </span>
+                                    </div>
+                                    <div class="col-12 col-md-3 my-2 content-box">
+                                        <span class="title mb-2 text-left text-warning">Đang điều trị: </span>
+                                        <span class="number p-2 rounded-pill bg-warning text-light">
+                                            <%= data.world.active %>
+                                        </span>
+                                    </div>
+                                    <div class="col-12 col-md-3 my-2 content-box">
+                                        <span class="title mb-2 text-left text-success">Đã khỏi: </span>
+                                        <span class="number p-2 rounded-pill bg-success text-light">
+                                            <%= data.world.recovered %>
+                                        </span>
+                                    </div>
+                                    <div class="col-12 col-md-3 my-2 content-box">
+                                        <span class="title mb-2 text-left text-dark">Tử vong: </span>
+                                        <span class="number p-2 rounded-pill bg-dark text-light">
+                                            <%= data.world.dead %>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="detail" class="my-5">
+                    <p class="section__title text-uppercase">Chi tiết</p>
+                    <div class="section__content">
+                        <div class="font-weight-normal container-fluid">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered text-center" id="sailorTableArea">
+                                    <%- data.detailTable %>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="notification" class="my-5">
+                    <p class="section__title text-uppercase">Thông báo mới</p>
+                    <div class="card section__content">
+                        <div class="card-body">
+                            <div class="timeline font-weight-normal">
+                                <%- data.timeline %>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="visualize" class="my-5">
+                    <p class="section__title text-uppercase">Trực quan</p>
+                    <div class="card section__content">
+                        <div class="card-body">
+                            <p>Coming soon</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    <script>
+        $(document).ready(function () {
+            // data table
+            $("#sailorTableArea").DataTable({
+                searching: false,
+                ordering: false,
+                responsive: true,
+                "language": {
+                    "lengthMenu": "Hiển thị  _MENU_  bản ghi trên trang",
+                    "zeroRecords": "Không có dữ liệu",
+                    "info": "Trang _PAGE_ / _PAGES_ ",
+                    "infoEmpty": "No records available",
+                    "infoFiltered": "(filtered from _MAX_ total records)",
+                    "paginate": {
+                        "first": "T.Đầu",
+                        "last": "T.Cuối",
+                        "previous": "<",
+                        "next": ">"
+                    },
+                }
+            });
+
+        });
+        (function () {
+            const keywords = [
+                "An Giang",
+                "Bà Rịa - Vũng Tàu",
+                "Bắc Giang",
+                "Bắc Kạn",
+                "Bạc Liêu",
+                "Bắc Ninh",
+                "Bến Tre",
+                "Bình Định",
+                "Bình Dương",
+                "Bình Phước",
+                "Bình Thuận",
+                "Cà Mau",
+                "Cao Bằng",
+                "Đắk Lắk",
+                "Đắk Nông",
+                "Điện Biên",
+                "Đồng Nai",
+                "Đồng Tháp",
+                "Gia Lai",
+                "Hà Giang",
+                "Hà Nam",
+                "Hà Tĩnh",
+                "Hải Dương",
+                "Hậu Giang",
+                "Hòa Bình",
+                "Hưng Yên",
+                "Khánh Hòa",
+                "Kiên Giang",
+                "Kon Tum",
+                "Lai Châu",
+                "Lâm Đồng",
+                "Lạng Sơn",
+                "Lào Cai",
+                "Long An",
+                "Nam Định",
+                "Nghệ An",
+                "Ninh Bình",
+                "Ninh Thuận",
+                "Phú Thọ",
+                "Quảng Bình",
+                "Quảng Nam",
+                "Quảng Ngãi",
+                "Quảng Ninh",
+                "Quảng Trị",
+                "Sóc Trăng",
+                "Sơn La",
+                "Tây Ninh",
+                "Thái Bình",
+                "Thái Nguyên",
+                "Thanh Hóa",
+                "Thừa Thiên Huế",
+                "Tiền Giang",
+                "Trà Vinh",
+                "Tuyên Quang",
+                "Vĩnh Long",
+                "Vĩnh Phúc",
+                "Yên Bái",
+                "Phú Yên",
+                "Cần Thơ",
+                "Đà Nẵng",
+                "Hải Phòng",
+                "Hà Nội",
+                "TP HCM",
+                "Hồ Chí Minh"];
+            $(".timeline-content").each(function () {
+                let content = $(this).html();
+                for (var value of keywords) {
+                    // console.log(value, content.indexOf(value));
+                    if (content.indexOf(value) != -1) {
+                        let repstr = '<span class="highlight">' + value + '</span>';
+                        let custfilter = new RegExp(value, "g");
+                        $(this).html($(this).html().replace(custfilter, repstr));
+                    }
+                }
+            })
+        })();
+    </script>
+    <script src="javascripts/navigation.js"></script>
+</body>
+
+</html>

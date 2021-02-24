@@ -1,0 +1,214 @@
+body {
+  font-family: "Overpass", sans-serif;
+  font-size: 16px;
+  color: #1c1c1c;
+}
+
+
+
+/* page's styles  */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.app,
+.page__content {
+  position: relative;
+}
+
+.app {
+  min-height: 100vh;
+  perspective: 1500px;
+  background-color: rgba(28, 28, 28, 0.5);
+}
+
+.page__content {
+  min-height: 100vh;
+  background-color: #fff;
+  width: 100%;
+  z-index: 0;
+}
+
+/* navigation styles */
+.side-nav {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 300px;
+  padding: 30px;
+  box-sizing: border-box;
+  background-color: #1c1c1c;
+  box-shadow: 4px 0 5px 0 rgba(0, 0, 0, 0.14), 1px 0 10px 0 rgba(0, 0, 0, 0.12),
+    2px 0 4px -1px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  z-index: 500;
+}
+
+/* nav list styles */
+.nav__list {
+  position: relative;
+  padding: 0;
+  margin: 45px 0 0 0;
+  list-style-type: none;
+}
+
+/* nav item styles */
+.nav__item:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+/* nav link styles */
+.nav__item {
+  transition-property: all;
+  transition-duration: 0.2s;
+  transition-timing-function: linear;
+  transition-delay: 0s;
+  color: #fff;
+  text-decoration: none;
+}
+.nav__item i {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+/* close icon styles */
+.nav__close {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width: 40px;
+  height: 25px;
+  cursor: pointer;
+  /* close icon elements */
+  /* hover effect */
+}
+.nav__close:before,
+.nav__close:after {
+  transition-property: all;
+  transition-duration: 0.2s;
+  transition-timing-function: linear;
+  transition-delay: 0s;
+  display: block;
+  width: 4px;
+  height: 28px;
+  border-radius: 10px;
+  content: "";
+  transform-origin: center center;
+  background-color: #fff;
+}
+.nav__close:before {
+  position: absolute;
+  top: 0;
+  left: 18px;
+  transform: rotate(-45deg);
+}
+.nav__close:after {
+  position: absolute;
+  top: 0;
+  right: 18px;
+  transform: rotate(45deg);
+}
+.nav__close:hover:before,
+.nav__close:hover:after {
+  background-color: #08a3ca;
+}
+
+/* nav open btn styles */
+.nav-open-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 999;
+  transition-property: all;
+  transition-duration: 0.2s;
+  transition-timing-function: linear;
+  transition-delay: 0s;
+  width: 40px;
+  height: 35px;
+  padding: 5px;
+  border-radius: 10px;
+  background-image: linear-gradient(to right, #1FA2FF 0%, #12D8FA  51%, #1FA2FF  100%);
+  background-size: 200% auto;
+  box-shadow: 2px 2px 3px #1c1c1c98;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.btn-grad {background-image: linear-gradient(to right, #1FA2FF 0%, #12D8FA  51%, #1FA2FF  100%)}
+.btn-grad {
+   margin: 10px;
+   padding: 15px 45px;
+   text-align: center;
+   text-transform: uppercase;
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: white;            
+   box-shadow: 0 0 20px #eee;
+   border-radius: 10px;
+   display: block;
+ }
+
+.nav-open-btn:hover {
+   background-position: right center
+ }
+
+.nav-open-btn.js-hidden {
+  transition-property: all;
+  transition-duration: 0s;
+  transition-timing-function: linear;
+  transition-delay: 0s;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.nav-open-btn__bar {
+  width: 90%;
+  height: 5px;
+  background: #ffffff;
+  border-radius: 20px;
+}
+
+/* Demo #1: styles */
+.nav--offcanvas-1 {
+  transition-property: all;
+  transition-duration: 0.2s;
+  transition-timing-function: linear;
+  transition-delay: 0s;
+  left: -300px;
+  /* opened styles */
+}
+.nav--offcanvas-1.js-opened {
+  transition-property: left;
+  transition-duration: 0.2s;
+  transition-timing-function: linear;
+  transition-delay: 0s;
+  left: 0;
+  opacity: 1;
+  visibility: visible;
+}
+
+.page__content--offcanvas-1 {
+  transition-property: all;
+  transition-duration: 0.2s;
+  transition-timing-function: linear;
+  transition-delay: 0s;
+  left: 0;
+  /* opened styles */
+}
+.page__content--offcanvas-1.js-opened {
+  transition-property: all;
+  transition-duration: 0.3s;
+  transition-timing-function: linear;
+  transition-delay: 0s;
+  left: 300px;
+}
+

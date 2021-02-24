@@ -1,0 +1,44 @@
+body {
+  padding: 0;
+  margin: 0;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.container-fluid {
+  width: 100%;
+}
+#top-branch {
+  background: url("../images/virus-banner.jpg") no-repeat rgb(0, 36, 88);
+  background-size: cover;
+  background-position: center;
+  min-height: 250px;
+  color: #ffffff;
+}
+.section__title {
+  border-left: 20px solid #f04242;
+  padding-left: 20px;
+}
+.content-box {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-around;
+}
+.timeline-detail {
+  border-bottom: 1px solid #3333333a;
+}
+.timeline-head {
+  width: 150px;
+  padding: 5px;
+  color: #ffffff;
+  background: #f04242;
+  text-align: center;
+}
+.timeline-head h3 {
+  font-size: 14px !important;
+  font-style: italic;
+}
+.timeline-content p:nth-child(2) {
+  font-weight: bold;
+}
