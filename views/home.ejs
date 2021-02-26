@@ -25,7 +25,7 @@
     <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
 
 
-    <title>NCOVI</title>
+    <title>NCOVI Tracking</title>
 </head>
 
 <body>
@@ -57,12 +57,12 @@
                         Thông báo mới
                     </a>
                 </li>
-                <li class="nav__item">
+                <!-- <li class="nav__item">
                     <a class="nav-link" href="#visualize">
                         <i class="fas fa-chart-bar"></i>
                         Trực quan
                     </a>
-                </li>
+                </li> -->
             </ul>
         </nav>
         <!--content part-->
@@ -171,120 +171,28 @@
                         </div>
                     </div>
                 </section>
-                <section id="visualize" class="my-5">
+                <!-- <section id="visualize" class="my-5">
                     <p class="section__title text-uppercase">Trực quan</p>
                     <div class="card section__content">
                         <div class="card-body">
                             <p>Coming soon</p>
                         </div>
                     </div>
-                </section>
+                </section> -->
             </div>
         </main>
+        <footer class="row">
+            <div class="container py-5 text-center">
+                <div class="row">
+                    <h5 class="col-12 text-uppercase">NCOVI Tracking Project</h5>
+                    <p class="col-12">Nguồn dữ liệu: <a class="text-danger" href="https://ncov.moh.gov.vn/">Bộ Y Tế</a></p>
+                    <p class="col-12 font-weight-normal font-italic">by baodanhit - danhtqbit@gmail.com</p>
+                </div>
+            </div>
+        </footer>
     </div>
-    <script>
-        $(document).ready(function () {
-            // data table
-            $("#sailorTableArea").DataTable({
-                searching: false,
-                ordering: false,
-                responsive: true,
-                "language": {
-                    "lengthMenu": "Hiển thị  _MENU_  bản ghi trên trang",
-                    "zeroRecords": "Không có dữ liệu",
-                    "info": "Trang _PAGE_ / _PAGES_ ",
-                    "infoEmpty": "No records available",
-                    "infoFiltered": "(filtered from _MAX_ total records)",
-                    "paginate": {
-                        "first": "T.Đầu",
-                        "last": "T.Cuối",
-                        "previous": "<",
-                        "next": ">"
-                    },
-                }
-            });
-
-        });
-        (function () {
-            const keywords = [
-                "An Giang",
-                "Bà Rịa - Vũng Tàu",
-                "Bắc Giang",
-                "Bắc Kạn",
-                "Bạc Liêu",
-                "Bắc Ninh",
-                "Bến Tre",
-                "Bình Định",
-                "Bình Dương",
-                "Bình Phước",
-                "Bình Thuận",
-                "Cà Mau",
-                "Cao Bằng",
-                "Đắk Lắk",
-                "Đắk Nông",
-                "Điện Biên",
-                "Đồng Nai",
-                "Đồng Tháp",
-                "Gia Lai",
-                "Hà Giang",
-                "Hà Nam",
-                "Hà Tĩnh",
-                "Hải Dương",
-                "Hậu Giang",
-                "Hòa Bình",
-                "Hưng Yên",
-                "Khánh Hòa",
-                "Kiên Giang",
-                "Kon Tum",
-                "Lai Châu",
-                "Lâm Đồng",
-                "Lạng Sơn",
-                "Lào Cai",
-                "Long An",
-                "Nam Định",
-                "Nghệ An",
-                "Ninh Bình",
-                "Ninh Thuận",
-                "Phú Thọ",
-                "Quảng Bình",
-                "Quảng Nam",
-                "Quảng Ngãi",
-                "Quảng Ninh",
-                "Quảng Trị",
-                "Sóc Trăng",
-                "Sơn La",
-                "Tây Ninh",
-                "Thái Bình",
-                "Thái Nguyên",
-                "Thanh Hóa",
-                "Thừa Thiên Huế",
-                "Tiền Giang",
-                "Trà Vinh",
-                "Tuyên Quang",
-                "Vĩnh Long",
-                "Vĩnh Phúc",
-                "Yên Bái",
-                "Phú Yên",
-                "Cần Thơ",
-                "Đà Nẵng",
-                "Hải Phòng",
-                "Hà Nội",
-                "TP HCM",
-                "Hồ Chí Minh"];
-            $(".timeline-content").each(function () {
-                let content = $(this).html();
-                for (var value of keywords) {
-                    // console.log(value, content.indexOf(value));
-                    if (content.indexOf(value) != -1) {
-                        let repstr = '<span class="highlight">' + value + '</span>';
-                        let custfilter = new RegExp(value, "g");
-                        $(this).html($(this).html().replace(custfilter, repstr));
-                    }
-                }
-            })
-        })();
-    </script>
     <script src="javascripts/navigation.js"></script>
+    <script src="javascripts/table.js"></script>
 </body>
 
 </html>

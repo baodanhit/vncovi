@@ -42,3 +42,13 @@ body {
 .timeline-content p:nth-child(2) {
   font-weight: bold;
 }
+.timeline-content p:nth-child(3) {
+  text-align: justify;
+}
+.highlight {
+  background: #f0f403;
+}
+footer {
+  background: #03A9F4;
+  color: #FAFAFA;
+}
