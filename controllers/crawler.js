@@ -1,25 +1,11 @@
-const cheerio = require('cheerio'); // khai báo module cheerio
+const cheerio = require('cheerio');
+const request = require('request-promise');
 
-const request = require('request-promise'); // khai báo module request-promise
-
-var data = new Object();
+var data = {};
 
 request({ url: 'https://ncov.moh.gov.vn/', "rejectUnauthorized": false }, (error, response, html) => { // gửi request đến trang 
     if (!error && response.statusCode == 200) {
         const $ = cheerio.load(html); // load HTML
-
-        // $('.box-vn').next().each((index, el) => { //
-        //     let total = $(el).find('.col.text-center.text-uppercase.text-danger-new span').text();
-        //     let activeCases = $(el).find('.col.text-center.text-uppercase.text-warning1 span').text();
-        //     let recoveredCases = $(el).find('.col.text-center.text-uppercase.text-success span').text();
-        //     let deadCases = $(el).find('.col.text-center.text-uppercase.text-danger-new1 span').text();
-        //     data.vietnam = {
-        //         'total': total,
-        //         'active': activeCases,
-        //         'recovered': recoveredCases,
-        //         'dead': deadCases
-        //     };
-        // })
         data.vietnam = lookUpCounter('.box-vn');
         data.world = lookUpCounter('.box-tg');
         data.detailTable = lockUpDetailTable();
@@ -138,10 +124,4 @@ request({ url: 'https://ncov.moh.gov.vn/vi/web/guest/dong-thoi-gian', "rejectUna
     }
 });
 
-module.exports = {
-    index: (req, res) => {
-        res.render('home', {
-            data: data
-        });
-    }
-}
+module.exports = data;
