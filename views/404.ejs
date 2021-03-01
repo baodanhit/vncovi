@@ -1,14 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
     <title>Oops! 404 Not Found</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            font: 18px "Lucida Grande", Helvetica, Arial, sans-serif;
+            background-color: #00DBDE;
+            background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
+        }
+
+        main {
+            min-height: 100vh;
+        }
+
+        #message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        img {
+            max-width: 300px;
+        }
+    </style>
 </head>
+
 <body>
-    <main>
-        <h1>404 Not Found</h1>
+    <main class="container-fluid">
+        <div id="message" class="text-center text-white">
+            <h1 class="my-2">404 Not Found</h1>
+            <img src="images/astronaut-2.png" alt="astronaut" class="my-2">
+            <p>Ôi không, bạn đã bị lạc !</p>
+            <p>Đang đưa bạn về với thực tại .... <span id="countdown">3</span> s</p>
+        </div>
+
     </main>
+    <script>
+        const counter = document.querySelector('#countdown');
+        let i = 3;
+        window.setTimeout(() => {
+            window.location = '/';
+        }, 3000);
+        window.setInterval(() => {
+            if (i >= 0) {
+                counter.innerHTML = i;
+                i--;
+            }
+        }, 1000);
+    </script>
 </body>
+
 </html>
