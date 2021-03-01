@@ -60,7 +60,8 @@ footer {
     flex-direction: row;
   }
   .content-box .title {
-    width: 50%;
+    width: 75%;
     text-align: left;
+    margin-right: auto;
   }
 }
