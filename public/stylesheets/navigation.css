@@ -68,8 +68,6 @@ body {
   transition-duration: 0.2s;
   transition-timing-function: linear;
   transition-delay: 0s;
-  color: #fff;
-  text-decoration: none;
 }
 .nav__item i {
     width: 20px;
@@ -99,7 +97,7 @@ body {
   border-radius: 10px;
   content: "";
   transform-origin: center center;
-  background-color: #fff;
+  background-color: #08a3ca;
 }
 .nav__close:before {
   position: absolute;
@@ -113,9 +111,12 @@ body {
   right: 18px;
   transform: rotate(45deg);
 }
-.nav__close:hover:before,
-.nav__close:hover:after {
-  background-color: #08a3ca;
+#side-nav .nav__link {
+  color: #08a3ca;
+  transition: .3s;
+}
+#side-nav .nav__link:hover {
+  color: #12D8FA;
 }
 
 /* nav open btn styles */
@@ -142,20 +143,6 @@ body {
   align-items: center;
   justify-content: space-around;
 }
-
-.btn-grad {background-image: linear-gradient(to right, #1FA2FF 0%, #12D8FA  51%, #1FA2FF  100%)}
-.btn-grad {
-   margin: 10px;
-   padding: 15px 45px;
-   text-align: center;
-   text-transform: uppercase;
-   transition: 0.5s;
-   background-size: 200% auto;
-   color: white;            
-   box-shadow: 0 0 20px #eee;
-   border-radius: 10px;
-   display: block;
- }
 
 .nav-open-btn:hover {
    background-position: right center
