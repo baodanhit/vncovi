@@ -44,17 +44,19 @@
 
     </main>
     <script>
-        const counter = document.querySelector('#countdown');
-        let i = 3;
-        window.setTimeout(() => {
-            window.location = '/';
-        }, 3000);
-        window.setInterval(() => {
-            if (i >= 0) {
-                counter.innerHTML = i;
-                i--;
-            }
-        }, 1000);
+        window.onload = () => {
+            const counter = document.querySelector('#countdown');
+            let i = 3;
+            window.setTimeout(() => {
+                window.location = '/';
+            }, 3000);
+            window.setInterval(() => {
+                if (i >= 0) {
+                    counter.innerHTML = i;
+                    i--;
+                }
+            }, 1000);
+        }
     </script>
 </body>
 
