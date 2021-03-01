@@ -4,8 +4,12 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const autorun = require('./controllers/autorun');
 const indexRouter = require('./routes/index');
-
 const app = express();
+
+// use .env 
+const dotenv = require('dotenv');
+dotenv.config();
+
 
 // config views
 app.set('view engine', 'ejs');
