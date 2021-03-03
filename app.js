@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const autorun = require('./controllers/autorun');
+const db = require('./models/database');
 const indexRouter = require('./routes/index');
 const app = express();
 
@@ -10,6 +10,8 @@ const app = express();
 const dotenv = require('dotenv');
 dotenv.config();
 
+// database connection
+db.connect();
 
 // config views
 app.set('view engine', 'ejs');
@@ -24,8 +26,5 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // routes
 app.use('/', indexRouter);
-
-// autorun task
-autorun();
 
 module.exports = app;

@@ -9,7 +9,6 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/preloader.css">
     <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
     <link rel="stylesheet" type="text/css" href="stylesheets/navigation.css">
-    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.1/dist/bootstrap-table.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css">
     <!-- jquery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -82,6 +81,9 @@
             <div class="content">
                 <div class="row mb-2" id="top-branch">
                     <h5 class="col text-uppercase text-center mt-auto">THÔNG TIN DỊCH BỆNH</h5>
+                </div>
+                <div class="row px-3" id="updated-time">
+                    <p class="font-italic font-weight-normal">Cập nhật dữ liệu lúc: <span></span></p>
                 </div>
                 <section id="general" class="my-5">
                     <p class="section__title text-uppercase">Tổng quan</p>
@@ -200,6 +202,9 @@
     <script src="javascripts/preloader.js"></script>
     <script src="javascripts/navigation.js"></script>
     <script src="javascripts/table.js"></script>
+    <script>
+        document.querySelector('#updated-time span').innerHTML = new Date(Date.now()).toLocaleTimeString();
+    </script>
 </body>
 
 </html>
