@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const autorun = require('../controllers/autorun')
+const autorun = require('../controllers/autorun');
 module.exports = database = {
     // database connection 
     connect: () => {
@@ -11,5 +11,6 @@ module.exports = database = {
             autorun();
 
         })
-    }
+    },
+    connection: mongoose.connection
 };

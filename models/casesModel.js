@@ -4,6 +4,7 @@ const casesSchema = new mongoose.Schema({
         type: Date, 
         default: Date.now 
     }, 
-    data: mongoose.Schema.Types.Mixed
+    vietnam: mongoose.Schema.Types.Mixed,
+    world: mongoose.Schema.Types.Mixed,
 });
 module.exports = mongoose.model('Cases', casesSchema);

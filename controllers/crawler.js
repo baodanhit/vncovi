@@ -3,6 +3,8 @@ const request = require('request-promise');
 
 var data = {};
 
+data.updateTime = Date.now();
+
 request({ url: 'https://ncov.moh.gov.vn/', "rejectUnauthorized": false }, (error, response, html) => { // gửi request đến trang 
     if (!error && response.statusCode == 200) {
         const $ = cheerio.load(html); // load HTML

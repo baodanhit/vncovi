@@ -16,12 +16,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" defer></script>
-    
+
     <!-- data table -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
 
-    <script type="text/javascript" charset="utf8"
-        src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js" defer></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js"
+        defer></script>
     <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js" defer></script>
 
 
@@ -82,8 +82,10 @@
                 <div class="row mb-2" id="top-branch">
                     <h5 class="col text-uppercase text-center mt-auto">THÔNG TIN DỊCH BỆNH</h5>
                 </div>
-                <div class="row px-3" id="updated-time">
-                    <p class="font-italic font-weight-normal">Cập nhật dữ liệu lúc: <span></span></p>
+                <div class="row px-3" id="update-time">
+                    <p class="font-italic font-weight-normal">Cập nhật dữ liệu lúc: <span>
+                            <%= new Date(Date.now()).toLocaleTimeString() %>
+                        </span></p>
                 </div>
                 <section id="general" class="my-5">
                     <p class="section__title text-uppercase">Tổng quan</p>
@@ -97,58 +99,97 @@
                         <div id="tab-vn" class="card tab-pane fade show active">
                             <div class="card-body container">
                                 <div class="row mt-1 px-2">
-                                    <div class="col-9 mx-auto col-md-3 my-2 px-1 content-box">
+                                    <div class="col-9 mx-auto col-md-3 my-2 px-1 content-box text-center">
                                         <span class="title mb-2 text-left text-danger">Tổng số ca nhiễm: </span>
                                         <span class="number p-2 rounded-pill bg-danger text-light">
                                             <%= data.vietnam.total %>
+                                                <% if (newCases.vietnam.total !=0) { %>
+                                                    <span class="badge badge-light">+<%= newCases.vietnam.total %>
+                                                    </span>
+                                                    <% } %>
                                         </span>
                                     </div>
-                                    <div class="col-9 mx-auto col-md-3 my-2 px-1 content-box">
+                                    <div class="col-9 mx-auto col-md-3 my-2 px-1 content-box text-center">
                                         <span class="title mb-2 text-left text-warning">Đang điều trị: </span>
                                         <span class="number p-2 rounded-pill bg-warning text-light">
                                             <%= data.vietnam.active %>
+                                                <% if (newCases.vietnam.active !=0) { %>
+                                                    <span class="badge badge-light">+<%= newCases.vietnam.active %>
+                                                    </span>
+                                                    <% } %>
                                         </span>
                                     </div>
-                                    <div class="col-9 mx-auto col-md-3 my-2 px-1 content-box">
+                                    <div class="col-9 mx-auto col-md-3 my-2 px-1 content-box text-center">
                                         <span class="title mb-2 text-left text-success">Đã khỏi: </span>
                                         <span class="number p-2 rounded-pill bg-success text-light">
                                             <%= data.vietnam.recovered %>
+                                                <% if (newCases.vietnam.recovered !=0) { %>
+                                                    <span class="badge badge-light">+<%= newCases.vietnam.recovered %>
+                                                    </span>
+                                                    <% } %>
                                         </span>
                                     </div>
-                                    <div class="col-9 mx-auto col-md-3 my-2 px-1 content-box">
+                                    <div class="col-9 mx-auto col-md-3 my-2 px-1 content-box text-center">
                                         <span class="title mb-2 text-left text-dark">Tử vong: </span>
                                         <span class="number p-2 rounded-pill bg-dark text-light">
                                             <%= data.vietnam.dead %>
+                                                <% if (newCases.vietnam.dead !=0) { %>
+                                                    <span class="badge badge-light">+<%= newCases.vietnam.dead %>
+                                                    </span>
+                                                    <% } %>
                                         </span>
                                     </div>
+                                </div>
+                                <div class="row px-2">
+                                    <p>So với 
+                                        <span id="new-cases-time-line" data-timeline="<%= newCases.timeline %>"></span>
+                                    :
+                                    </p>
+                                    
                                 </div>
                             </div>
                         </div>
                         <div id="tab-world" class="card tab-pane fade">
-                            <div class="card-body">
+                            <div class="card-body container">
                                 <div class="row mt-1 px-2">
-                                    <div class="col-9 mx-auto col-md-3 my-2 px-1 content-box">
+                                    <div class="col-9 mx-auto col-md-3 my-2 px-1 content-box text-center">
                                         <span class="title mb-2 text-left text-danger">Tổng số ca nhiễm: </span>
                                         <span class="number p-2 rounded-pill bg-danger text-light">
                                             <%= data.world.total %>
+                                                <% if (newCases.world.total !=0) { %>
+                                                    <span class="badge badge-light">+<%= newCases.world.total %>
+                                                    </span>
+                                                    <% } %>
                                         </span>
                                     </div>
-                                    <div class="col-9 mx-auto col-md-3 my-2 px-1 content-box">
+                                    <div class="col-9 mx-auto col-md-3 my-2 px-1 content-box text-center">
                                         <span class="title mb-2 text-left text-warning">Đang điều trị: </span>
                                         <span class="number p-2 rounded-pill bg-warning text-light">
                                             <%= data.world.active %>
+                                                <% if (newCases.world.active !=0) { %>
+                                                    <span class="badge badge-light">+<%= newCases.world.active %>
+                                                    </span>
+                                                    <% } %>
                                         </span>
                                     </div>
-                                    <div class="col-9 mx-auto col-md-3 my-2 px-1 content-box">
+                                    <div class="col-9 mx-auto col-md-3 my-2 px-1 content-box text-center">
                                         <span class="title mb-2 text-left text-success">Đã khỏi: </span>
                                         <span class="number p-2 rounded-pill bg-success text-light">
                                             <%= data.world.recovered %>
+                                                <% if (newCases.world.recovered !=0) { %>
+                                                    <span class="badge badge-light">+<%= newCases.world.recovered %>
+                                                    </span>
+                                                    <% } %>
                                         </span>
                                     </div>
-                                    <div class="col-9 mx-auto col-md-3 my-2 px-1 content-box">
+                                    <div class="col-9 mx-auto col-md-3 my-2 px-1 content-box text-center">
                                         <span class="title mb-2 text-left text-dark">Tử vong: </span>
                                         <span class="number p-2 rounded-pill bg-dark text-light">
                                             <%= data.world.dead %>
+                                                <% if (newCases.world.dead !=0) { %>
+                                                    <span class="badge badge-light">+<%= newCases.world.dead %>
+                                                    </span>
+                                                    <% } %>
                                         </span>
                                     </div>
                                 </div>
@@ -188,6 +229,12 @@
                 </section> -->
             </div>
         </main>
+        <script>
+            const dateTimeFormat = new Intl.DateTimeFormat('vi-VN',  { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+            const timeDisplay = document.querySelector('#new-cases-time-line');
+            var date = new Date(timeDisplay.getAttribute('data-timeline'));
+            timeDisplay.innerHTML = dateTimeFormat.format(date);
+        </script>
         <footer class="row">
             <div class="container py-5 text-center">
                 <div class="row">
@@ -202,9 +249,6 @@
     <script src="javascripts/preloader.js"></script>
     <script src="javascripts/navigation.js"></script>
     <script src="javascripts/table.js"></script>
-    <script>
-        document.querySelector('#updated-time span').innerHTML = new Date(Date.now()).toLocaleTimeString();
-    </script>
 </body>
 
 </html>

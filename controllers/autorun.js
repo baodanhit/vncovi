@@ -5,19 +5,19 @@ const Cases = require('../models/casesModel');
 // !export
 module.exports = autorun = () => {
     const schedule = require('node-schedule');
-    const time = { hour: 23, minute:59 };
+    const time = { hour: 23, minute: 58 };
     const job = schedule.scheduleJob(time, function () {
         let crawlData = require('./crawler');
-        let data = {
-            vietnam: crawlData.vietnam,
-            word: crawlData.world
-        };
-        insertData(data);
+        let updateTime = crawlData.updateTime;
+        let vietnam = crawlData.vietnam;
+        let world = crawlData.world;
+        insertData(updateTime, vietnam, world);
     });
-    var insertData = (data) => {
+    var insertData = (time, vietnam, world) => {
         let document = {
-            time_updated: Date.now(),
-            data: data
+            time_updated: time,
+            vietnam: vietnam,
+            world: world
         };
         let caseCollection = new Cases(document);
         caseCollection.save((err, data) => {
