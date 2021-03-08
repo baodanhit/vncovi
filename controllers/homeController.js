@@ -1,8 +1,5 @@
-// const mongoose = require('mongoose');
-// const db_conn = require('../models/database').connection;
 const Cases = require('../models/casesModel');
 const crawlData = require('./crawler');
-console.log(Object.keys(crawlData));
 
 let latestData = {};
 let getLatestData = () => (
@@ -41,11 +38,11 @@ function getNewCases() {
                 dead: convertToNumber(crawlData.world.dead) - convertToNumber(latestData.world.dead)
             }
         };
-        console.log(newCases);
+        // console.log(newCases);
         return newCases
     }
     catch (err) {
-        console.log(err)
+        // console.log(err);
         return {};
     }
 }

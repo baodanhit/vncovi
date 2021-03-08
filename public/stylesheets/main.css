@@ -6,8 +6,17 @@ body {
 a {
   text-decoration: none !important;
 }
+a.nav__link {
+  color: #fafafa;
+}
+a.nav__link:hover {
+  color: #FFFFFF;
+}
 .container-fluid {
   width: 100%;
+}
+.bg-gradient {
+  background-image: linear-gradient( 109.6deg,  rgba(62,161,219,1) 11.2%, rgba(93,52,236,1) 100.2% );
 }
 #top-branch {
   background: url("../images/virus-banner.jpg") no-repeat rgb(0, 36, 88);
@@ -51,8 +60,12 @@ a {
   background: #f0f403;
 }
 footer {
-  background: #03A9F4;
-  color: #FAFAFA;
+  background-image: linear-gradient(
+    109.6deg,
+    rgba(62, 161, 219, 1) 11.2%,
+    rgba(93, 52, 236, 1) 100.2%
+  );
+  color: #fafafa;
 }
 
 @media screen and (max-width: 576px) {
