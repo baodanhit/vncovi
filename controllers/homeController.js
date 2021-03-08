@@ -1,5 +1,5 @@
 const Cases = require('../models/casesModel');
-const crawlData = require('./crawler');
+var crawlData = require('./crawler');
 
 let latestData = {};
 let getLatestData = () => (
@@ -19,26 +19,24 @@ let getLatestData = () => (
 );
 getLatestData();
 
-let convertToNumber = (n) => (+ n.replace(/\./g, ''));
-function getNewCases() {
+let getNewCases = () => {
     let newCases = {};
     try {
         newCases = {
             timeline: latestData.time_updated,
             vietnam: {
-                total: convertToNumber(crawlData.vietnam.total) - convertToNumber(latestData.vietnam.total),
-                active: convertToNumber(crawlData.vietnam.active) - convertToNumber(latestData.vietnam.active),
-                recovered: convertToNumber(crawlData.vietnam.recovered) - convertToNumber(latestData.vietnam.recovered),
-                dead: convertToNumber(crawlData.vietnam.dead) - convertToNumber(latestData.vietnam.dead)
+                total: crawlData.vietnam.total - latestData.vietnam.total,
+                active: crawlData.vietnam.active - latestData.vietnam.active,
+                recovered: crawlData.vietnam.recovered - latestData.vietnam.recovered,
+                dead: crawlData.vietnam.dead - latestData.vietnam.dead
             },
             world: {
-                total: convertToNumber(crawlData.world.total) - convertToNumber(latestData.world.total),
-                active: convertToNumber(crawlData.world.active) - convertToNumber(latestData.world.active),
-                recovered: convertToNumber(crawlData.world.recovered) - convertToNumber(latestData.world.recovered),
-                dead: convertToNumber(crawlData.world.dead) - convertToNumber(latestData.world.dead)
+                total: crawlData.world.total - latestData.world.total,
+                active: crawlData.world.active - latestData.world.active,
+                recovered: crawlData.world.recovered - latestData.world.recovered,
+                dead: crawlData.world.dead - latestData.world.dead
             }
         };
-        // console.log(newCases);
         return newCases
     }
     catch (err) {
@@ -46,11 +44,26 @@ function getNewCases() {
         return {};
     }
 }
+let convertDataToString = (data) => {
+    var returnData = { ...data };
+    Object.entries(returnData).forEach(([key, value]) => {
+        returnData[key] = value.toLocaleString('en-US');
+    });
+    return returnData
+}
+let formatNumbers = () => {
+    var returnData = { ...crawlData };
+    returnData['vietnam'] = convertDataToString(returnData.vietnam);
+    returnData['world'] = convertDataToString(returnData.world);
+    return returnData
+}
+
 module.exports = {
     index: (req, res) => {
+        let formattedData = formatNumbers(crawlData);
         res.render('home', {
-            data: crawlData,
-            newCases: getNewCases()
+            data: formattedData,
+            newCases: getNewCases(),
         });
     }
 }
