@@ -22,11 +22,12 @@ getLatestData();
 let getNewCases = () => {
     let newCases = {};
     try {
+        let totalVN = crawlData.vietnam.total - latestData.vietnam.total;
         newCases = {
             timeline: latestData.time_updated,
             vietnam: {
-                total: crawlData.vietnam.total - latestData.vietnam.total,
-                active: crawlData.vietnam.active - latestData.vietnam.active,
+                total: totalVN,
+                active: crawlData.vietnam.active - latestData.vietnam.active + totalVN,
                 recovered: crawlData.vietnam.recovered - latestData.vietnam.recovered,
                 dead: crawlData.vietnam.dead - latestData.vietnam.dead
             },
