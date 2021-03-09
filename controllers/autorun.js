@@ -5,8 +5,11 @@ const Cases = require('../models/casesModel');
 // !export
 module.exports = autorun = () => {
     const schedule = require('node-schedule');
-    const time = { hour: 23, minute: 58 };
-    const job = schedule.scheduleJob(time, function () {
+    const rule = new schedule.RecurrenceRule();
+    rule.tz = 'Asia/Ho_Chi_Minh';
+    rule.hour = 23;
+    rule.minute = 58;
+    const job = schedule.scheduleJob(rule, function () {
         let crawlData = require('./crawler');
         let updateTime = crawlData.updateTime;
         let vietnam = crawlData.vietnam;

@@ -61,6 +61,7 @@ let formatNumbers = () => {
 module.exports = {
     index: (req, res) => {
         let formattedData = formatNumbers(crawlData);
+        // console.log(crawlData);
         res.render('home', {
             data: formattedData,
             newCases: getNewCases(),
