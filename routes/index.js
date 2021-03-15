@@ -8,9 +8,9 @@ const $ = require('jquery');
 router.get('/', homeController.index);
 
 // handel error
-router.get('/*', (req, res) => {
-    res.status(404);
-    res.render('404');
-    res.end();
-})
+// router.get('/*', (req, res) => {
+//     res.status(404);
+//     res.render('404');
+//     res.end();
+// })
 module.exports = router;

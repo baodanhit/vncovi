@@ -26,5 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // routes
 app.use('/', indexRouter);
-
+app.use((req, res) => {
+    res.status(404).render('404').end();
+});
 module.exports = app;
