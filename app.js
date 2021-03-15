@@ -5,7 +5,8 @@ const logger = require('morgan');
 const db = require('./models/database');
 const indexRouter = require('./routes/index');
 const app = express();
-
+// time in ms
+let oneDay = 86400000;
 // use .env 
 const dotenv = require('dotenv');
 dotenv.config();
@@ -22,9 +23,11 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public'), { maxAge: oneDay*15 }));
 
 // routes
 app.use('/', indexRouter);
-
+app.use((req, res) => {
+    res.status(404).render('404').end();
+});
 module.exports = app;

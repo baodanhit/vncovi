@@ -1,7 +1,8 @@
 {
-  "name": "vncovi-tracking",
+  "name": "vncovi",
   "version": "1.0.0",
   "private": true,
+  "main": "server.js",
   "scripts": {
     "start": "node ./bin/www",
     "serve": "nodemon ./bin/www"
